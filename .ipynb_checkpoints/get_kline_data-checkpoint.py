@@ -39,9 +39,9 @@ def format_data(path, out):
     for files in csv_files:
         frame = pd.read_csv(path + '/' + files)
         frame = frame.iloc[:, [0,1,2,3,4,5]]
-        frame.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume']
-        frame.Date = pd.to_datetime(frame.Date, unit='ms')
-        frame.set_index('Date', inplace=True)
+        frame.columns = ['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume']
+        frame.timestamp = pd.to_datetime(frame.timestamp, unit='ms')
+        frame.set_index('timestamp', inplace=True)
         frame = frame.astype(float)
         df_append = pd.concat([df_append, frame])
 
